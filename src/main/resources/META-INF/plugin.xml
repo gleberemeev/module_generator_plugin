@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.gleberemeev.modulegeneratorplugin</id>
-    <name>module_generator_plugin</name>
+    <name>Module Generator</name>
     <vendor>gleberemeev</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,7 +9,8 @@
     <depends>org.jetbrains.android</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.gleberemeev.modulegeneratorplugin.services.MyApplicationService"/>
+        <applicationService
+                serviceImplementation="com.github.gleberemeev.modulegeneratorplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.gleberemeev.modulegeneratorplugin.services.MyProjectService"/>
     </extensions>
 
@@ -17,4 +18,12 @@
         <listener class="com.github.gleberemeev.modulegeneratorplugin.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+    <actions>
+        <action id="com.github.gleberemeev.modulegeneratorplugin.action.HelloWorldAction"
+                class="com.github.gleberemeev.modulegeneratorplugin.action.HelloWorldAction" text="Hello World Action"
+                description="Act to Hello world">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <override-text place="MainMenu" text="PopupAction"/>
+        </action>
+    </actions>
 </idea-plugin>
